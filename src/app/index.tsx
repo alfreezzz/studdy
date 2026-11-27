@@ -1,4 +1,4 @@
-import { Redirect } from "expo-router";
+import { Redirect, router } from "expo-router";
 import {
   ActivityIndicator,
   Alert,
@@ -65,6 +65,12 @@ export default function IndexScreen() {
 
       <Pressable style={styles.button} onPress={handleLogout}>
         <Text style={styles.buttonText}>Logout</Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        onPress={() => void router.push("/my-study-intents")}
+      >
+        <Text style={styles.buttonText}>Study intents</Text>
       </Pressable>
     </View>
   );

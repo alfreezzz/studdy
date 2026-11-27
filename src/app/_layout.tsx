@@ -31,6 +31,20 @@ export default function RootLayout() {
                 headerBackVisible: false,
               }}
             />
+
+            <Stack.Screen
+              name="my-study-intents"
+              options={{
+                title: "My Study Intents",
+              }}
+            />
+
+            <Stack.Screen
+              name="create-study-intent"
+              options={{
+                title: "Create Study Intent",
+              }}
+            />
           </Stack>
         </RouteGuard>
       </ThemeProvider>
