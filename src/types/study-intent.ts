@@ -33,3 +33,19 @@ export type CreateStudyIntentData = Omit<
   StudyIntent,
   "id" | "ownerUid" | "createdAt" | "updatedAt"
 >;
+
+export interface DiscoverableStudyIntent extends StudyIntent {
+  ownerProfile: {
+    username: string;
+    fullName: string;
+    avatar: string;
+    university: string;
+    major: string;
+    semester: number;
+    bio?: string;
+  };
+}
+
+export interface RankedStudyIntent extends DiscoverableStudyIntent {
+  compatibilityScore: number;
+}

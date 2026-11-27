@@ -45,6 +45,16 @@ export default function RootLayout() {
                 title: "Create Study Intent",
               }}
             />
+
+            <Stack.Screen
+              name="discovery-test"
+              options={{ title: "Discovery Test" }}
+            />
+
+            <Stack.Screen
+              name="recommendation-test"
+              options={{ title: "Recommendation Test" }}
+            />
           </Stack>
         </RouteGuard>
       </ThemeProvider>
