@@ -3,6 +3,8 @@ import * as SplashScreen from "expo-splash-screen";
 import { useColorScheme } from "react-native";
 
 import { AnimatedSplashOverlay } from "@/components/animated-icon";
+import { RouteGuard } from "@/components/route-guard";
+import { AuthProvider } from "@/contexts/auth-context";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -10,17 +12,28 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
+    <AuthProvider>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <AnimatedSplashOverlay />
 
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <RouteGuard>
+          <Stack>
+            <Stack.Screen name="index" options={{ headerShown: false }} />
 
-        <Stack.Screen
-          name="auth-test"
-          options={{ title: "Authentication Test" }}
-        />
-      </Stack>
-    </ThemeProvider>
+            <Stack.Screen name="login" options={{ headerShown: false }} />
+
+            <Stack.Screen name="register" options={{ headerShown: false }} />
+
+            <Stack.Screen
+              name="onboarding"
+              options={{
+                title: "Complete Your Profile",
+                headerBackVisible: false,
+              }}
+            />
+          </Stack>
+        </RouteGuard>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
